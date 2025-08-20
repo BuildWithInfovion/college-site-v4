@@ -1,25 +1,24 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import cors from "cors";
-
-dotenv.config();
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("College Website Backend is running 🚀");
-});
-
-// MONGO CONNECTION PLACEHOLDER
-mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/college-db")
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB failed:", err));
+require("dotenv").config();
+const http = require("http");
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/health") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        status: "ok",
+        service: "backend-bootstrap",
+        time: new Date().toISOString(),
+      })
+    );
+    return;
+  }
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("College Site v4 Backend - Bootstrap (Day 1)");
+});
+
+server.listen(PORT, () => {
+  console.log(`Bootstrap server running at http://localhost:${PORT}`);
 });
