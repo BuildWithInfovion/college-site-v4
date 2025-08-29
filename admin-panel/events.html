@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Event Images – Admin Panel</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-gray-800 shadow-lg flex flex-col transition-transform -translate-x-full md:translate-x-0 z-40"
+    >
+      <div
+        class="flex items-center justify-center h-16 border-b border-gray-700"
+      >
+        <h1 class="text-green-400 text-xl font-bold">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-4 overflow-y-auto">
+        <a
+          href="./index.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Home</a
+        >
+        <a
+          href="./notices.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Notices</a
+        >
+        <a
+          href="./events.html"
+          class="block px-4 py-3 rounded-md bg-green-600 text-gray-900 font-semibold"
+          >Events</a
+        >
+        <a
+          href="./queries.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Queries</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col min-h-screen md:pl-64">
+      <!-- Topbar -->
+      <header
+        class="flex items-center justify-between bg-gray-800 h-16 px-6 border-b border-gray-700 shadow-sm"
+      >
+        <!-- Mobile menu toggle button -->
+        <button
+          id="mobile-menu-button"
+          aria-label="Toggle sidebar"
+          class="md:hidden text-gray-400 hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 rounded"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <h2 class="text-2xl font-bold text-green-400">Manage Event Images</h2>
+
+        <button
+          id="btn-logout"
+          class="text-green-400 hover:text-green-600 font-semibold focus:outline-none"
+        >
+          Logout
+        </button>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-6 bg-gray-900 overflow-auto">
+        <section class="max-w-6xl mx-auto space-y-8">
+          <!-- Upload form -->
+          <form
+            id="upload-form"
+            class="glass p-6 rounded-xl shadow-lg bg-gray-800 max-w-lg mx-auto flex flex-col space-y-4"
+            enctype="multipart/form-data"
+            autocomplete="off"
+          >
+            <label class="block text-gray-200 font-semibold" for="image-input"
+              >Upload New Event Image</label
+            >
+            <input
+              id="image-input"
+              name="image"
+              type="file"
+              accept="image/*"
+              required
+              class="w-full text-gray-200 file:bg-green-600 file:text-gray-900 file:px-4 file:py-2 file:rounded-md file:border-none file:cursor-pointer hover:file:bg-green-500 transition"
+            />
+            <button
+              type="submit"
+              class="self-start bg-green-500 hover:bg-green-400 text-gray-900 font-bold py-2 px-6 rounded-md shadow transition"
+            >
+              Upload
+            </button>
+          </form>
+
+          <!-- Uploaded images display -->
+          <section>
+            <h3 class="text-green-400 text-xl font-semibold mb-4">
+              Uploaded Images
+            </h3>
+            <div
+              id="image-gallery"
+              class="grid grid-cols-2 md:grid-cols-4 gap-4"
+              aria-live="polite"
+            >
+              <!-- Images will be dynamically injected here -->
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Authentication check: redirect to login if not logged in
+        const token = localStorage.getItem("jwt_token");
+        if (!token) {
+          window.location.href = "./login.html";
+          return; // Stop further script execution if not authenticated
+        }
+
+        const sidebar = document.getElementById("sidebar");
+        const mobileMenuBtn = document.getElementById("mobile-menu-button");
+        const logoutBtn = document.getElementById("btn-logout");
+        const uploadForm = document.getElementById("upload-form");
+        const imageInput = document.getElementById("image-input");
+        const imageGallery = document.getElementById("image-gallery");
+
+        // ---------- Use environment variable or fallback for API base URL ----------
+        const apiBaseUrl =
+          window.API_BASE_URL && window.API_BASE_URL !== ""
+            ? `${window.API_BASE_URL}/api/events`
+            : "http://localhost:5000/api/events"; // fallback for local dev
+
+        // Helper to add Authorization header with Bearer token
+        function getAuthHeaders() {
+          return token ? { Authorization: "Bearer " + token } : {};
+        }
+
+        // Sidebar toggle
+        mobileMenuBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("-translate-x-full");
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("jwt_token");
+          window.location.href = "./login.html";
+        });
+
+        // Load and display event images
+        async function loadImages() {
+          imageGallery.innerHTML =
+            '<p class="text-gray-400 col-span-full text-center">Loading...</p>';
+          try {
+            const res = await fetch(apiBaseUrl, {
+              headers: { ...getAuthHeaders() },
+            });
+
+            if (res.status === 401 || res.status === 403) {
+              alert("Session expired. Please log in again.");
+              logoutBtn.click();
+              return;
+            }
+            if (!res.ok) throw new Error("Failed to fetch images");
+
+            const json = await res.json();
+            const images = json.data || [];
+
+            if (images.length === 0) {
+              imageGallery.innerHTML =
+                '<p class="text-gray-400 col-span-full text-center">No images uploaded yet.</p>';
+              return;
+            }
+
+            imageGallery.innerHTML = "";
+            images.forEach(({ _id, imageUrl }) => {
+              const div = document.createElement("div");
+              div.className = "relative rounded-lg overflow-hidden shadow-lg";
+              div.innerHTML = `
+            <img src="${imageUrl}" alt="Event Image" class="w-full h-40 object-cover" />
+            <button aria-label="Delete image" title="Delete image" class="delete-btn absolute top-1 right-1 bg-red-600 hover:bg-red-700 text-white rounded-full p-1 focus:outline-none" data-id="${_id}">&times;</button>
+          `;
+
+              const deleteBtn = div.querySelector(".delete-btn");
+              deleteBtn.addEventListener("click", async (e) => {
+                e.stopPropagation();
+                const imageId = e.target.getAttribute("data-id");
+                if (!confirm("Delete this image?")) return;
+
+                deleteBtn.disabled = true;
+                try {
+                  const delRes = await fetch(`${apiBaseUrl}/${imageId}`, {
+                    method: "DELETE",
+                    headers: { ...getAuthHeaders() },
+                  });
+                  if (delRes.status === 401 || delRes.status === 403) {
+                    alert("Session expired. Please log in again.");
+                    logoutBtn.click();
+                    return;
+                  }
+                  if (!delRes.ok) {
+                    let errorMessage = "Failed to delete image";
+                    try {
+                      const errJson = await delRes.json();
+                      errorMessage =
+                        errJson.error || errJson.message || errorMessage;
+                    } catch {
+                      errorMessage = await delRes.text();
+                    }
+                    throw new Error(errorMessage);
+                  }
+                  alert("Image deleted successfully");
+                  loadImages();
+                } catch (error) {
+                  alert(error.message || "Error deleting image");
+                  console.error("Delete error:", error);
+                } finally {
+                  deleteBtn.disabled = false;
+                }
+              });
+
+              imageGallery.appendChild(div);
+            });
+          } catch (error) {
+            imageGallery.innerHTML =
+              '<p class="text-red-500 col-span-full text-center">Failed to load images.</p>';
+            console.error("Load images error:", error);
+          }
+        }
+
+        // Handle image upload
+        uploadForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          if (!imageInput.files.length) {
+            alert("Please select an image to upload");
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("image", imageInput.files[0]);
+
+          const submitBtn = uploadForm.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Uploading...";
+
+          try {
+            const res = await fetch(apiBaseUrl, {
+              method: "POST",
+              body: formData,
+              headers: { ...getAuthHeaders() },
+            });
+
+            if (res.status === 401 || res.status === 403) {
+              alert("Session expired. Please log in again.");
+              logoutBtn.click();
+              return;
+            }
+
+            if (!res.ok) {
+              let errorMessage = "Upload failed";
+              try {
+                const errJson = await res.json();
+                errorMessage = errJson.error || errJson.message || errorMessage;
+              } catch {
+                errorMessage = await res.text();
+              }
+              throw new Error(errorMessage);
+            }
+
+            alert("Image uploaded successfully!");
+            uploadForm.reset();
+            loadImages();
+          } catch (error) {
+            alert(error.message || "Error uploading image");
+            console.error("Upload error:", error);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Upload";
+          }
+        });
+
+        // Load images on page load
+        loadImages();
+      });
+    </script>
+  </body>
+</html>

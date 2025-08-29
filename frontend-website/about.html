@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - College Name</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <!-- Robots for SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      property="og:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://college.com/index.html" />
+    <meta
+      property="og:image"
+      content="C:\Users\sanka\Desktop\college-site-v4\frontend-website\College Logo.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      name="twitter:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta name="twitter:image" content="College Logo.jpg" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollegeOrUniversity",
+        "name": "Narayana Prashaskiya Seva Mahavidyalay",
+        "url": "https://college.com",
+        "logo": "College Logo.jpg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-800-555-1234",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.facebook.com/yourcollege",
+          "https://twitter.com/yourcollege"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-md">
+      <nav
+        class="container mx-auto flex justify-between items-center py-4 px-6 relative"
+      >
+        <div class="flex items-center space-x-3">
+          <img src="College Logo.jpg" alt="College Logo" class="h-11 w-auto" />
+          <a href="index.html" class="text-2xl font-bold text-green-400"
+            >Narayana Prashaskiya Seva Mahavidyalay</a
+          >
+        </div>
+
+        <!-- Hamburger Button for Mobile -->
+        <button
+          id="mobile-menu-button"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 group focus:outline-none z-50"
+          aria-label="Toggle menu"
+        >
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded transition-transform duration-300 ease-in-out origin-center group-hover:bg-green-400"
+          ></span>
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded my-1 transition-opacity duration-300 ease-in-out group-hover:bg-green-400"
+          ></span>
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded transition-transform duration-300 ease-in-out origin-center group-hover:bg-green-400"
+          ></span>
+        </button>
+
+        <ul
+          id="mobile-menu"
+          class="hidden flex-col space-y-2 absolute top-full left-0 w-full bg-gray-800 rounded-b-md shadow-md z-40 p-4 md:flex md:flex-row md:static md:space-y-0 md:space-x-6 md:w-auto md:bg-transparent md:p-0 md:rounded-none md:shadow-none text-gray-200 font-semibold"
+        >
+          <li>
+            <a
+              href="index.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="academics.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Academics</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="bg-gradient-to-r from-blue-900 to-green-900 text-center py-16 px-6"
+    >
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+        Learn more about our legacy, vision, and mission that empower students
+        for a brighter future.
+      </p>
+    </section>
+    <!-- Founding Body Section -->
+    <section class="container mx-auto px-6 py-16">
+      <h2 class="text-3xl font-bold mb-8 text-green-400 text-center">
+        Founding Body
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Founder Card 1 -->
+        <div
+          class="bg-gray-800 rounded-lg p-6 text-center shadow-lg flex flex-col items-center"
+          style="min-height: 600px"
+        >
+          <div
+            class="w-48 h-[384px] flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-gray-900"
+          >
+            <img
+              src="Head 1.jpg"
+              alt="Prof. Narayanrao Munde"
+              class="h-full w-auto object-cover object-top"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-200 mb-1 mt-2">
+            Prof. Narayanrao Munde
+          </h3>
+          <div class="text-gray-400 text-sm mb-2">Director</div>
+          <div
+            class="text-gray-400 text-xs leading-relaxed tracking-wide mt-auto pt-4"
+          >
+            NARAYANA PRASHASKIY SEVA MAHAVIDYALAY, LOHA & <br />
+            NARAYANA INTERNATIONAL SCHOOL & JR. COLLEGE, LOHA
+          </div>
+        </div>
+        <!-- Founder Card 2 -->
+        <div
+          class="bg-gray-800 rounded-lg p-6 text-center shadow-lg flex flex-col items-center"
+          style="min-height: 600px"
+        >
+          <div
+            class="w-48 h-[384px] flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-gray-900"
+          >
+            <img
+              src="Head 2.jpg"
+              alt="Kaushal Narayanrao Munde"
+              class="h-full w-auto object-cover object-top"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-200 mb-1 mt-2">
+            Kaushal Narayanrao Munde
+          </h3>
+          <div class="text-gray-400 text-sm mb-2">Treasurer</div>
+          <div class="text-gray-400 text-xs leading-relaxed tracking-wide">
+            B.Tech., M.B.A, Jamnalal Bajaj College<br />
+            NARAYANA PRASHASKIY SEVA MAHAVIDYALAY, LOHA & <br />
+            NARAYANA INTERNATIONAL SCHOOL & JR. COLLEGE, LOHA
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="container mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+      <!-- About Image -->
+      <div>
+        <img
+          src="background.jpg"
+          alt="College Campus"
+          class="rounded-lg shadow-lg"
+        />
+      </div>
+      <!-- About Text -->
+      <div>
+        <h2 class="text-3xl font-bold mb-4 text-green-400">Who We Are</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Our institution stands as a beacon of academic excellence, committed
+          to nurturing talent, fostering innovation, and empowering individuals
+          to create an impact in a dynamic world. With state-of-the-art
+          infrastructure and dedicated faculty, we aim to deliver holistic
+          education that combines knowledge with values.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Since our inception, we have worked tirelessly to create a learning
+          environment that inspires curiosity, collaboration, and confidence in
+          our students. Our alumni are spread across the globe, contributing to
+          diverse industries and societal development.
+        </p>
+
+        <p class="text-gray-300 leading-relaxed mb-6">
+          At Narayana Prashaskiya Seva Mahavidyalay, we believe education is not
+          just about imparting knowledge but also about shaping character and
+          ethics. We strive to cultivate critical thinkers and socially
+          responsible citizens who are prepared to face global challenges.
+        </p>
+
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Our curriculum is designed to integrate theoretical understanding with
+          practical skills, offering students ample opportunities for research,
+          internships, and community engagement. We are proud of our efforts in
+          fostering innovation through workshops, seminars, and collaborations
+          with industry experts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Affiliation & Recognition -->
+    <section class="bg-gray-800 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-green-400 mb-6">
+          Affiliation & Recognition
+        </h2>
+        <p class="text-gray-300 max-w-3xl mx-auto mb-8">
+          <span class="font-semibold text-green-400"
+            >Narayana Prashaskiya Seva Mahavidyalay</span
+          >, located at Sai Golden City, Loha, Dist-Nanded (College Code-1377),
+          is affiliated with Sant Dnyaneshwar Maharaj Shikshan Prasarak Mandal
+          under section 66 of KKSU Act 1197.<br /><br />
+          The institution has been granted for the Academic Year
+          <span class="font-semibold">2025–26</span> for the following programs:
+        </p>
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-[320px] md:min-w-[600px] mx-auto text-left bg-gray-900 rounded-lg shadow-lg"
+          >
+            <thead>
+              <tr>
+                <th class="px-4 py-2 border-b border-gray-700 text-green-400">
+                  Sr. No
+                </th>
+                <th class="px-4 py-2 border-b border-gray-700 text-green-400">
+                  Name of the Program
+                </th>
+                <th class="px-4 py-2 border-b border-gray-700 text-green-400">
+                  Intake Capacity
+                </th>
+                <th class="px-4 py-2 border-b border-gray-700 text-green-400">
+                  Affiliation Year
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 border-b border-gray-800">1</td>
+                <td class="px-4 py-2 border-b border-gray-800">
+                  B. A. (Civil Services)
+                </td>
+                <td class="px-4 py-2 border-b border-gray-800">120</td>
+                <td class="px-4 py-2 border-b border-gray-800">2025–26</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2">2</td>
+                <td class="px-4 py-2">M. A. (Public Administration)</td>
+                <td class="px-4 py-2">60</td>
+                <td class="px-4 py-2">2025–26</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-500 mt-6">
+          (Certificate reference: Affiliation Continuation Academic Year
+          2025-26)
+        </p>
+      </div>
+    </section>
+
+    <!-- Vision and Mission -->
+    <section class="bg-gray-800 py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-green-400 mb-8">
+          Our Vision & Mission
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 text-left">
+          <!-- Vision -->
+          <div
+            class="bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-green-500/20 transition"
+          >
+            <h3 class="text-xl font-semibold text-blue-400 mb-4">Vision</h3>
+            <p class="text-gray-300 leading-relaxed">
+              To become a premier educational institution recognized globally
+              for academic excellence, innovation, and ethical values. We
+              envision a future where every student emerges as a responsible
+              leader, equipped with knowledge, skills, and integrity to make
+              meaningful contributions to society.
+            </p>
+          </div>
+          <!-- Mission -->
+          <div
+            class="bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-green-500/20 transition"
+          >
+            <h3 class="text-xl font-semibold text-blue-400 mb-4">Mission</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>
+                To deliver a curriculum that balances theoretical knowledge and
+                practical skills.
+              </li>
+              <li>
+                To foster research, creativity, and entrepreneurial spirit among
+                students.
+              </li>
+              <li>
+                To promote inclusivity and diversity, ensuring equal
+                opportunities for all.
+              </li>
+              <li>
+                To build global partnerships and engage in impactful community
+                outreach programs.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center text-gray-400">
+      <p>&copy; Narayana Prashaskiya Seva Mahavidyalay. All rights reserved.</p>
+    </footer>
+    <script>
+      const mobileMenuBtn = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const [topLine, middleLine, bottomLine] =
+        mobileMenuBtn.querySelectorAll("span");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+        mobileMenuBtn.setAttribute("aria-expanded", !expanded);
+
+        mobileMenu.classList.toggle("hidden");
+
+        if (!expanded) {
+          topLine.style.transform = "rotate(45deg) translateY(7px)";
+          middleLine.style.opacity = "0";
+          bottomLine.style.transform = "rotate(-45deg) translateY(-7px)";
+        } else {
+          topLine.style.transform = "rotate(0) translateY(0)";
+          middleLine.style.opacity = "1";
+          bottomLine.style.transform = "rotate(0) translateY(0)";
+        }
+      });
+    </script>
+  </body>
+</html>

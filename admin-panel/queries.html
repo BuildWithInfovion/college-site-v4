@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Queries – Admin Panel</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-gray-800 shadow-lg flex flex-col transition-transform -translate-x-full md:translate-x-0 z-40"
+    >
+      <div
+        class="flex items-center justify-center h-16 border-b border-gray-700"
+      >
+        <h1 class="text-green-400 text-xl font-bold">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-4 overflow-y-auto">
+        <a
+          href="./index.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Home</a
+        >
+        <a
+          href="./notices.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Notices</a
+        >
+        <a
+          href="./events.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Events</a
+        >
+        <a
+          href="./queries.html"
+          class="block px-4 py-3 rounded-md bg-green-600 text-gray-900 font-semibold"
+          >Queries</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col min-h-screen md:pl-64">
+      <!-- Topbar -->
+      <header
+        class="flex items-center justify-between bg-gray-800 h-16 px-6 border-b border-gray-700 shadow-sm"
+      >
+        <!-- Mobile menu toggle button -->
+        <button
+          id="mobile-menu-button"
+          aria-label="Toggle sidebar"
+          class="md:hidden text-gray-400 hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 rounded"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <h2 class="text-2xl font-bold text-green-400">Manage Queries</h2>
+
+        <button
+          id="btn-logout"
+          class="text-green-400 hover:text-green-600 font-semibold focus:outline-none"
+        >
+          Logout
+        </button>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-6 bg-gray-900 overflow-auto">
+        <section class="max-w-7xl mx-auto">
+          <div class="glass rounded-xl shadow-lg p-6 overflow-x-auto">
+            <table class="w-full min-w-max text-left border-collapse">
+              <thead class="bg-gray-800 text-green-400">
+                <tr>
+                  <th class="py-3 px-4 font-semibold">Name</th>
+                  <th class="py-3 px-4 font-semibold">Email</th>
+                  <th class="py-3 px-4 font-semibold">Subject</th>
+                  <th class="py-3 px-4 font-semibold max-w-xs">Message</th>
+                  <th class="py-3 px-4 font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody
+                class="text-gray-300 divide-y divide-gray-700"
+                id="queries-tbody"
+              >
+                <!-- Rows will be dynamically added here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4 flex justify-end space-x-1 text-gray-400">
+            <button
+              aria-label="Previous"
+              class="px-3 py-1 rounded-md hover:bg-gray-700"
+            >
+              Prev
+            </button>
+            <button
+              class="px-3 py-1 rounded-md bg-green-600 text-gray-900 font-semibold"
+            >
+              1
+            </button>
+            <button
+              aria-label="Next"
+              class="px-3 py-1 rounded-md hover:bg-gray-700"
+            >
+              Next
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const backendURL = "http://localhost:5000";
+
+      const sidebar = document.getElementById("sidebar");
+      const mobileMenuBtn = document.getElementById("mobile-menu-button");
+      const logoutBtn = document.getElementById("btn-logout");
+      const tableBody = document.getElementById("queries-tbody");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("jwt_token"); // Clear token on logout
+        window.location.href = "./login.html";
+      });
+
+      // Escape HTML to prevent XSS
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      // Delete query API call and update table
+      async function deleteQuery(id) {
+        const token = localStorage.getItem("jwt_token");
+        if (!token) {
+          alert("Please log in to delete queries.");
+          window.location.href = "./login.html";
+          return;
+        }
+        if (
+          !confirm(
+            "Are you sure you want to delete this query? This action cannot be undone."
+          )
+        )
+          return;
+        try {
+          const response = await fetch(`${backendURL}/api/queries/${id}`, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) throw new Error("Failed to delete query");
+          alert("Query deleted successfully.");
+          loadQueries();
+        } catch (error) {
+          alert("Error deleting query: " + error.message);
+        }
+      }
+
+      // Load queries and populate table
+      async function loadQueries() {
+        const token = localStorage.getItem("jwt_token");
+        if (!token) {
+          alert("Please log in to view queries.");
+          window.location.href = "./login.html";
+          return;
+        }
+
+        try {
+          const response = await fetch(`${backendURL}/api/queries`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) throw new Error("Failed to fetch queries");
+
+          const result = await response.json();
+
+          const queries = result.data || [];
+
+          tableBody.innerHTML = "";
+          if (queries.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="5" class="py-4 px-4 text-center text-gray-500">No queries found.</td></tr>`;
+            return;
+          }
+
+          queries.forEach((query) => {
+            const tr = document.createElement("tr");
+            tr.classList.add("hover:bg-gray-700");
+            tr.innerHTML = `
+              <td class="py-3 px-4">${escapeHtml(query.name)}</td>
+              <td class="py-3 px-4">${escapeHtml(query.email)}</td>
+              <td class="py-3 px-4">${escapeHtml(query.subject)}</td>
+              <td class="py-3 px-4 max-w-xs truncate" title="${escapeHtml(
+                query.message
+              )}">${escapeHtml(query.message)}</td>
+              <td class="py-3 px-4 space-x-2">
+                <button class="text-red-500 hover:text-red-700 focus:outline-none" aria-label="Delete Query" onclick="deleteQuery('${
+                  query._id
+                }')">🗑️</button>
+              </td>
+            `;
+            tableBody.appendChild(tr);
+          });
+        } catch (error) {
+          tableBody.innerHTML = `<tr><td colspan="5" class="py-4 px-4 text-center text-red-500">Error loading queries: ${error.message}</td></tr>`;
+        }
+      }
+
+      loadQueries();
+    </script>
+  </body>
+</html>

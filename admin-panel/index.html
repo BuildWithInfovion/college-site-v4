@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard – Narayana Prashaskiya Seva Mahavidyalay</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-gray-800 shadow-lg flex flex-col transition-transform -translate-x-full md:translate-x-0 z-40"
+    >
+      <div
+        class="flex items-center justify-center h-16 border-b border-gray-700"
+      >
+        <h1 class="text-green-400 text-xl font-bold">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-4 overflow-y-auto">
+        <a
+          href="./index.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Home</a
+        >
+        <a
+          href="./notices.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Notices</a
+        >
+        <a
+          href="./events.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Events</a
+        >
+        <a
+          href="./queries.html"
+          class="block px-4 py-3 rounded-md hover:bg-green-600 hover:text-gray-900 transition font-semibold"
+          >Queries</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col min-h-screen md:pl-64">
+      <!-- Topbar -->
+      <header
+        class="flex items-center justify-between bg-gray-800 h-16 px-6 border-b border-gray-700 shadow-sm"
+      >
+        <!-- Mobile menu toggle button -->
+        <button
+          id="mobile-menu-button"
+          aria-label="Toggle sidebar"
+          class="md:hidden text-gray-400 hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 rounded"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <h2 class="text-2xl font-bold text-green-400">Dashboard</h2>
+
+        <button
+          id="btn-logout"
+          class="text-green-400 hover:text-green-600 font-semibold focus:outline-none"
+        >
+          Logout
+        </button>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-6 space-y-6 bg-gray-900">
+        <!-- Welcome Card -->
+        <section
+          class="glass p-6 rounded-xl shadow-lg bg-gray-800 max-w-4xl mx-auto cursor-pointer"
+          onclick="window.location.href='./notices.html'"
+          role="link"
+          tabindex="0"
+          onkeydown="if(event.key === 'Enter'){window.location.href='./notices.html'}"
+          aria-label="Go to Notices"
+          id="card-notices"
+        >
+          <h4 class="font-bold text-green-400 mb-2">Notices</h4>
+          <p class="text-gray-300">Create, edit, and delete notices.</p>
+        </section>
+
+        <section
+          class="glass p-6 rounded-xl shadow-lg bg-gray-800 max-w-4xl mx-auto cursor-pointer"
+          onclick="window.location.href='./events.html'"
+          role="link"
+          tabindex="0"
+          onkeydown="if(event.key === 'Enter'){window.location.href='./events.html'}"
+          aria-label="Go to Events"
+          id="card-events"
+        >
+          <h4 class="font-bold text-green-400 mb-2">Events</h4>
+          <p class="text-gray-300">Manage upcoming college events.</p>
+        </section>
+
+        <section
+          class="glass p-6 rounded-xl shadow-lg bg-gray-800 max-w-4xl mx-auto cursor-pointer"
+          onclick="window.location.href='./queries.html'"
+          role="link"
+          tabindex="0"
+          onkeydown="if(event.key === 'Enter'){window.location.href='./queries.html'}"
+          aria-label="Go to Queries"
+          id="card-queries"
+        >
+          <h4 class="font-bold text-green-400 mb-2">Queries</h4>
+          <p class="text-gray-300">Respond to student and visitor queries.</p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const mobileMenuBtn = document.getElementById("mobile-menu-button");
+      const logoutBtn = document.getElementById("btn-logout");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+        } else {
+          sidebar.classList.add("-translate-x-full");
+        }
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        // Replace with actual logout logic such as clearing tokens/session
+        window.location.href = "./login.html";
+      });
+    </script>
+  </body>
+</html>

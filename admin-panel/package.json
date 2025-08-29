@@ -1,0 +1,25 @@
+{
+  "name": "admin-panel",
+  "version": "1.0.0",
+  "description": "Admin Panel for College Site v4 with Tailwind CSS and PostCSS setup",
+  "main": "index.js",
+  "scripts": {
+    "dev": "postcss ./src/input.css -o ./dist/output.css --watch",
+    "build": "postcss ./src/input.css -o ./dist/output.css --env production",
+    "start": "live-server ./"
+  },
+  "keywords": [
+    "college-website",
+    "admin-panel",
+    "tailwindcss",
+    "postcss"
+  ],
+  "author": "Sankalp Deshpande",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^3.4.17"
+  }
+}

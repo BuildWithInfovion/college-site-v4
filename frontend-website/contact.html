@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Narayana Prashaskiya Seva Mahavidyalay</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <!-- Robots for SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      property="og:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://college.com/index.html" />
+    <meta
+      property="og:image"
+      content="C:\Users\sanka\Desktop\college-site-v4\frontend-website\College Logo.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      name="twitter:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta name="twitter:image" content="College Logo.jpg" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollegeOrUniversity",
+        "name": "Narayana Prashaskiya Seva Mahavidyalay",
+        "url": "https://college.com",
+        "logo": "College Logo.jpg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-800-555-1234",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.facebook.com/yourcollege",
+          "https://twitter.com/yourcollege"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-md">
+      <nav
+        class="container mx-auto flex justify-between items-center py-4 px-6 relative"
+      >
+        <div class="flex items-center space-x-3">
+          <img src="College Logo.jpg" alt="College Logo" class="h-11 w-auto" />
+          <a href="index.html" class="text-2xl font-bold text-green-400">
+            Narayana Prashaskiya Seva Mahavidyalay
+          </a>
+        </div>
+
+        <button
+          id="mobile-menu-button"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 group focus:outline-none z-50"
+          aria-label="Toggle menu"
+        >
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded transition-transform duration-300 ease-in-out origin-center group-hover:bg-green-400"
+          ></span>
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded my-1 transition-opacity duration-300 ease-in-out group-hover:bg-green-400"
+          ></span>
+          <span
+            class="block h-0.5 w-6 bg-gray-300 rounded transition-transform duration-300 ease-in-out origin-center group-hover:bg-green-400"
+          ></span>
+        </button>
+
+        <ul
+          id="mobile-menu"
+          class="hidden flex-col space-y-2 absolute top-full left-0 w-full bg-gray-800 rounded-b-md shadow-md z-40 p-4 md:flex md:flex-row md:static md:space-y-0 md:space-x-6 md:w-auto md:bg-transparent md:p-0 md:rounded-none md:shadow-none text-gray-200 font-semibold"
+        >
+          <li>
+            <a
+              href="index.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="academics.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Academics</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="hover:text-green-400 block py-2 px-4 rounded md:inline-block"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="bg-gradient-to-r from-blue-900 to-green-900 text-center py-16 px-6"
+    >
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+        We’re here to support students, parents, and partners. Reach out with
+        any questions about admissions, academics, or collaborations.
+      </p>
+      <a
+        href="#contact-form"
+        class="inline-block mt-6 px-6 py-3 rounded-lg bg-green-400 text-gray-900 font-semibold shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5 transition focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+      >
+        Start a Conversation
+      </a>
+    </section>
+
+    <!-- Contact & Details -->
+    <main class="container mx-auto px-6 py-16 grid gap-10 lg:grid-cols-3">
+      <!-- Form -->
+      <section class="lg:col-span-2">
+        <div class="bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-8">
+          <h2 class="text-2xl font-bold text-green-400 mb-2">
+            Send us a message
+          </h2>
+          <p class="text-gray-300 mb-6">
+            Fill out the form and our team will get back to you within 1–2
+            business days.
+          </p>
+
+          <form
+            id="contact-form"
+            action="#"
+            method="POST"
+            class="grid grid-cols-1 md:grid-cols-2 gap-6"
+            novalidate
+          >
+            <div>
+              <label
+                for="name"
+                class="block text-sm font-medium text-gray-200 mb-2"
+                >Full Name<span class="text-green-400">*</span></label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+                placeholder="e.g., Priya Sharma"
+                class="w-full rounded-lg bg-gray-900 border border-gray-700 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition"
+              />
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-200 mb-2"
+                >Email<span class="text-green-400">*</span></label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="w-full rounded-lg bg-gray-900 border border-gray-700 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition"
+              />
+            </div>
+
+            <div class="md:col-span-2">
+              <label
+                for="subject"
+                class="block text-sm font-medium text-gray-200 mb-2"
+                >Subject<span class="text-green-400">*</span></label
+              >
+              <input
+                id="subject"
+                name="subject"
+                type="text"
+                required
+                placeholder="Write a short subject"
+                class="w-full rounded-lg bg-gray-900 border border-gray-700 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition"
+              />
+            </div>
+
+            <div class="md:col-span-2">
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-200 mb-2"
+                >Message<span class="text-green-400">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Tell us how we can help you"
+                class="w-full rounded-lg bg-gray-900 border border-gray-700 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition"
+              ></textarea>
+            </div>
+
+            <div
+              class="md:col-span-2 flex items-start gap-3 text-sm text-gray-400"
+            >
+              <input
+                id="consent"
+                name="consent"
+                type="checkbox"
+                class="mt-1 h-4 w-4 rounded border-gray-600 bg-gray-900 focus:ring-green-400"
+                required
+              />
+              <label for="consent"
+                >I agree to be contacted by the college regarding my
+                inquiry.</label
+              >
+            </div>
+
+            <div class="md:col-span-2">
+              <button
+                type="submit"
+                class="w-full sm:w-auto px-6 py-3 rounded-lg bg-green-400 text-gray-900 font-semibold shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5 transition focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              >
+                Submit Inquiry
+              </button>
+            </div>
+          </form>
+
+          <p id="response-message" class="mt-4 text-sm"></p>
+        </div>
+      </section>
+
+      <!-- Details / Address / Map -->
+      <aside class="space-y-6">
+        <div
+          class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-green-500/20 transition"
+        >
+          <h3 class="text-xl font-semibold text-blue-400 mb-3">
+            Campus Address
+          </h3>
+          <p class="text-gray-300 leading-relaxed">
+            📍Narayana Prashaskiya Seva Mahavidyalay<br />Sai Golden City,
+            Loha<br />Dist- Nanded (College Code-1377)<br />Loha 431713,Nanded,
+            Maharashtra,India<br />
+          </p>
+          <div class="mt-4 space-y-2 text-gray-300">
+            <p>
+              <span class="text-gray-400">Phone:</span>
+              <a href="tel:+910000000000" class="hover:text-green-400"
+                >+91 9637466477</a
+              >
+            </p>
+            <p>
+              <span class="text-gray-400">Phone:</span>
+              <a href="tel:+910000000000" class="hover:text-green-400"
+                >+91 8010135006</a
+              >
+            </p>
+            <p>
+              <span class="text-gray-400">Email:</span>
+              <a
+                href="mailto:narayanacsc111@gmail.com"
+                class="hover:text-green-400"
+                >narayanacsc111@gmail.com</a
+              >
+            </p>
+            <p>
+              <span class="text-gray-400">Office Hours:</span> Mon–Sat,
+              10:00–17:00
+            </p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div
+            class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-green-500/20 transition"
+          >
+            <h4 class="text-lg font-semibold text-blue-400">Admissions</h4>
+            <p class="text-gray-300 text-sm mt-2">
+              Questions about eligibility, fees, or documents?
+            </p>
+            <a
+              href="admissions.html"
+              class="inline-block mt-4 text-green-400 hover:underline"
+              >Explore Admissions →</a
+            >
+          </div>
+          <div
+            class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-green-500/20 transition"
+          >
+            <h4 class="text-lg font-semibold text-blue-400">Academics</h4>
+            <p class="text-gray-300 text-sm mt-2">
+              View programs, syllabus, and academic calendar.
+            </p>
+            <a
+              href="academics.html"
+              class="inline-block mt-4 text-green-400 hover:underline"
+              >View Academics →</a
+            >
+          </div>
+        </div>
+
+        <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.7226059358077!2d77.11925849999999!3d18.943668600000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfd213f797dde9%3A0x342fce3bdba93f88!2sOld%20Loha%20Rd%2C%20Shivkalyan%20Nagar%2C%20Loha%2C%20Maharashtra%20431708!5e0!3m2!1sen!2sin!4v1755984872091!5m2!1sen!2sin"
+            width="100%"
+            height="150"
+            class="rounded-lg border border-gray-700"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </aside>
+    </main>
+
+    <!-- CTA band -->
+    <section class="bg-gray-800 py-10">
+      <div
+        class="container mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-gray-300 text-center sm:text-left">
+          Prefer speaking to someone? Our helpdesk team is ready to assist you.
+        </p>
+        <a
+          href="tel:+910000000000"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-green-400 text-gray-900 font-semibold shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5 transition focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+        >
+          Call Helpdesk
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center text-gray-400">
+      <p>&copy; Narayana Prashaskiya Seva Mahavidyalay. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const [topLine, middleLine, bottomLine] =
+        mobileMenuBtn.querySelectorAll("span");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+        mobileMenuBtn.setAttribute("aria-expanded", !expanded);
+        mobileMenu.classList.toggle("hidden");
+
+        if (!expanded) {
+          topLine.style.transform = "rotate(45deg) translateY(7px)";
+          middleLine.style.opacity = "0";
+          bottomLine.style.transform = "rotate(-45deg) translateY(-7px)";
+        } else {
+          topLine.style.transform = "rotate(0) translateY(0)";
+          middleLine.style.opacity = "1";
+          bottomLine.style.transform = "rotate(0) translateY(0)";
+        }
+      });
+
+      // Contact Form Submission Handling
+      const form = document.getElementById("contact-form");
+      const responseMessage = document.getElementById("response-message");
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        responseMessage.textContent = "";
+        responseMessage.className = "";
+
+        const formData = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          subject: form.subject.value.trim(),
+          message: form.message.value.trim(),
+          // Assign default priority, extend form if needed
+          priority: "medium",
+        };
+
+        // Basic front-end validation
+        if (
+          !formData.name ||
+          !formData.email ||
+          !formData.subject ||
+          !formData.message ||
+          !form.consent.checked
+        ) {
+          responseMessage.textContent =
+            "Please fill all required fields and give consent to be contacted.";
+          responseMessage.className = "text-red-500 mt-2";
+          return;
+        }
+
+        try {
+          form.querySelector("button[type=submit]").disabled = true;
+
+          const response = await fetch("http://localhost:5000/api/queries", {
+            // or 127.0.0.1:5000
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.status === "success") {
+            responseMessage.textContent =
+              "Thank you! Your inquiry has been submitted successfully.";
+            responseMessage.className = "text-green-400 mt-2 font-semibold";
+            form.reset();
+          } else {
+            responseMessage.textContent =
+              "Failed to submit inquiry: " +
+              (result.message || "Please try again.");
+            responseMessage.className = "text-red-500 mt-2";
+          }
+        } catch (error) {
+          responseMessage.textContent =
+            "An error occurred while submitting your inquiry. Please try again later.";
+          responseMessage.className = "text-red-500 mt-2";
+          console.error("Form submission error:", error);
+        } finally {
+          form.querySelector("button[type=submit]").disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

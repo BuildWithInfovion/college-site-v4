@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>College Name — Official Website</title>
+        <!-- Robots for SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      property="og:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://college.com/index.html" />
+    <meta
+      property="og:image"
+      content="C:\Users\sanka\Desktop\college-site-v4\frontend-website\College Logo.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Narayana Prashaskiya Seva Mahavidyalay | Excellence in Education"
+    />
+    <meta
+      name="twitter:description"
+      content="Narayana Prashaskiya Seva Mahavidyalay offers quality education and excellent campus facilities. Discover admissions, academics, and campus life."
+    />
+    <meta name="twitter:image" content="College Logo.jpg" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollegeOrUniversity",
+        "name": "Narayana Prashaskiya Seva Mahavidyalay",
+        "url": "https://college.com",
+        "logo": "College Logo.jpg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-800-555-1234",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.facebook.com/yourcollege",
+          "https://twitter.com/yourcollege"
+        ]
+      }
+    </script>
+  </head>
+    <meta
+      name="description"
+      content="Official website of College Name. Admissions, courses, notices, and more."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="shadow bg-white sticky top-0 z-10">
+      <div
+        class="container mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a href="/" class="text-xl font-semibold">College Name</a>
+        <nav class="space-x-4 text-sm">
+          <a href="/about.html">About</a>
+          <a href="/courses.html">Courses</a>
+          <a href="/notices.html">Notices</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/admissions.html">Admissions</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <section class="container mx-auto px-4 py-16">
+        <h1 class="text-3xl font-bold">Welcome to College Name</h1>
+        <p class="text-gray-600">
+          Day 1 scaffold for College Site v4. Dynamic modules will follow later.
+        </p>
+      </section>
+    </main>
+
+    <footer class="border-t">
+      <div class="container mx-auto px-4 py-6 text-sm text-gray-500">
+        © <span id="year"></span> College Name. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
