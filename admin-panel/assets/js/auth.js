@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        `${window.API_BASE_URL || "http://localhost:5000"}/api/auth/login`,
+        `${
+          window.API_BASE_URL || "https://college-site-v4.onrender.com"
+        }/api/auth/login`,
         {
           method: "POST",
           headers: {
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Save token to localStorage for future requests - corrected key here
+      // Save token to localStorage for future requests
       localStorage.setItem("jwt_token", data.token);
 
       msg.textContent = "Login successful! Redirecting...";
