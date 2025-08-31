@@ -18,8 +18,8 @@ app.use(morgan("combined"));
 app.use(
   cors({
     origin: [
-      process.env.CLIENT_URL,
-      process.env.ADMIN_URL,
+      process.env.CLIENT_URL || "https://college-site-v4.netlify.app", // your frontend Netlify URL
+      process.env.ADMIN_URL || "https://college-site-v4admin-panel.netlify.app", // your admin Netlify URL
       "http://127.0.0.1:5500", // for local admin panel dev server
       "http://localhost:5500",
     ],
@@ -43,7 +43,7 @@ app.use("/api/events", eventRoutes);
 app.use("/api/queries", queriesRoute);
 app.use("/api/auth", authRoutes);
 
-// 7. Health check
+// 7. Health check endpoint
 app.get("/health", (req, res) => {
   res.json({
     status: "ok",
@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
   res.send("Hello from backend server - MongoDB Connected!");
 });
 
-// 9. 404 Handler
+// 9. 404 Handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({ status: "error", message: "Endpoint not found" });
 });
@@ -65,12 +65,10 @@ app.use((req, res) => {
 // 10. Global error handler
 app.use((err, req, res, next) => {
   console.error("Global error handler:", err);
-
   const statusCode =
     err.status ||
     err.statusCode ||
     (res.statusCode >= 400 ? res.statusCode : 500);
-
   res.status(statusCode).json({
     status: "error",
     message:
@@ -96,11 +94,15 @@ mongoose
 
 // 12. Graceful shutdown on SIGINT and SIGTERM
 ["SIGINT", "SIGTERM"].forEach((signal) => {
-  process.on(signal, () => {
+  process.on(signal, async () => {
     console.log(`${signal} received, shutting down gracefully`);
-    mongoose.connection.close(false, () => {
+    try {
+      await mongoose.connection.close(false);
       console.log("MongoDB connection closed");
       process.exit(0);
-    });
+    } catch (err) {
+      console.error("Error during MongoDB connection close:", err);
+      process.exit(1);
+    }
   });
 });

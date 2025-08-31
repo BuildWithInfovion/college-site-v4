@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const eventsContainer = document.getElementById("events-container");
 
   // Centralized backend URL for easy config
-  const backendURL = "http://localhost:5000";
+  const backendURL =
+    window.API_BASE_URL || "https://college-site-v4.onrender.com";
 
   // Utility to escape HTML safely (optional for raw text)
   const escapeHtml = (text) =>
