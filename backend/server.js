@@ -14,15 +14,18 @@ app.use(helmet());
 // 2. Logger middleware
 app.use(morgan("combined"));
 
-// 3. CORS with expanded allowed origins for frontend and admin panel
+// 3. CORS with expanded allowed origins for frontend + admin panel
 app.use(
   cors({
     origin: [
-      process.env.CLIENT_URL || "https://college-site-v4.netlify.app", // your frontend Netlify URL
-      process.env.ADMIN_URL || "https://college-site-v4admin-panel.netlify.app", // your admin Netlify URL
-      "http://127.0.0.1:5500", // for local admin panel dev server
+      "https://npsmahavidyalay.in", // ✅ your main website (Netlify + custom domain)
+      "https://admin.npsmahavidyalay.in", // ✅ your admin panel (Netlify + custom domain)
+      process.env.CLIENT_URL || "https://college-site-v4.netlify.app", // fallback old frontend
+      process.env.ADMIN_URL || "https://college-site-v4admin-panel.netlify.app", // fallback old admin
+      "http://127.0.0.1:5500", // local dev
       "http://localhost:5500",
     ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
