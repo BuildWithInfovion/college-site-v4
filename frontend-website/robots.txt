@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /login.html
 Disallow: /notices.html
-Allow: /
 
-Sitemap: https://college.com/sitemap.xml
+Sitemap: https://npsmahavidyalay.in/sitemap.xml
